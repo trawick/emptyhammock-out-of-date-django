@@ -34,4 +34,7 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Development Status :: 3 - Alpha',
     ],
+    install_requires=[
+        'PyYAML',
+    ],
 )
