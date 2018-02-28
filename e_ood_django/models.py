@@ -124,3 +124,6 @@ class PackageDBAccess(models.Model):
 
     def __str__(self):
         return self.notes
+
+    class Meta:
+        verbose_name_plural = 'package DB accesses'

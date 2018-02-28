@@ -1,5 +1,6 @@
 from django.conf.urls import url
 from django.contrib import admin
+from django.shortcuts import reverse
 
 from .models import Package, PackageVersion, PackageDBAccess
 from .utils import staff_required
@@ -38,7 +39,20 @@ class PackageAdmin(admin.ModelAdmin):
 
 class PackageDBAccessAdmin(admin.ModelAdmin):
     list_display = ('uuid', 'notes', )
-    readonly_fields = ('uuid', )
+    readonly_fields = ('uuid', '_url')
+    fields = ('_url', 'uuid', 'notes')
+
+    def get_queryset(self, request):
+        setattr(self, 'saved_request', request)
+        return super().get_queryset(request)
+
+    def _url(self, obj):
+        return self.saved_request.build_absolute_uri(
+            reverse(
+                'admin:e_ood_django_package_export_db',
+                args=[obj.uuid]
+            )
+        )
 
 
 admin.site.register(Package, PackageAdmin)
