@@ -6,7 +6,9 @@ from .models import Package
 
 
 class DBImportForm(forms.Form):
-    db_file = forms.FileField(required=True, label='YAML-formatted package db')
+    db_file = forms.FileField(
+        required=True, label='YAML-formatted package db',
+        help_text='This db will replace the current package db.')
 
     def clean_db_file(self):
         db_file = self.cleaned_data['db_file']

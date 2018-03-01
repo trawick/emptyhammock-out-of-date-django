@@ -9,8 +9,8 @@ from pkg_resources import SetuptoolsVersion
 
 class Package(models.Model):
     name = models.CharField(blank=False, max_length=200)
-    name_lower = models.CharField(blank=True, unique=True, max_length=200)
-    changelog_url = models.URLField(blank=True)
+    name_lower = models.CharField('Name (lower-cased)', blank=True, unique=True, max_length=200)
+    changelog_url = models.URLField('Changelog URL', blank=True)
 
     def save(self, *args, **kwargs):
         self.name_lower = self.name.lower()
