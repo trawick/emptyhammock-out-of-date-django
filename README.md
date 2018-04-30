@@ -14,3 +14,9 @@ You should understand emptyhammock-out-of-date and the meaning of its
 package release database before considering this package.
 
 ![Sample view in Django admin](/docs/Django-admin-image.png?raw=true "Sample view")
+
+## Support
+
+Please open Github issues for suggestions or suspected problems.  Even if I am
+unable to respond in a timely basis, the information may quickly become valuable
+to others, and I will eventually find time to respond to the issue.
