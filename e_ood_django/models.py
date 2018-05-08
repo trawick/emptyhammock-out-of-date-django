@@ -4,7 +4,7 @@ import uuid
 from django.core.exceptions import ValidationError
 from django.db import models
 
-from pkg_resources import SetuptoolsVersion
+from packaging.version import InvalidVersion, Version
 
 
 class Package(models.Model):
@@ -83,9 +83,8 @@ def validate_version(value):
     if value[-1] == '.':
         value = value + '0'  # Add 0 to get, e.g., '1.11.0'
     try:
-        SetuptoolsVersion(value)
-    # XXX can't manage to import InvalidVersion, which inherits from ValueError
-    except ValueError as e:
+        Version(value)
+    except InvalidVersion as e:
         raise ValidationError(str(e))
 
 
