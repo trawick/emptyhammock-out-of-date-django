@@ -1,6 +1,6 @@
-Django==1.11.10
-  pytz==2018.3
-PyYAML==3.12
+Django==1.11.20
+  pytz==2019.1
+PyYAML==5.1
 packaging==17.1
   pyparsing==2.2.0
   six==1.11.0
