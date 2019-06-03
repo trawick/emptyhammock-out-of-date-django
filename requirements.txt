@@ -1,4 +1,4 @@
-Django==1.11.20
+Django==1.11.21
   pytz==2019.1
 PyYAML==5.1
 packaging==17.1
