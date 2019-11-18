@@ -105,7 +105,7 @@ class PackageVersion(models.Model):
         (LTS, 'LTS release'),
     )
 
-    package = models.ForeignKey(Package)
+    package = models.ForeignKey(Package, on_delete=models.CASCADE)
     type = models.SmallIntegerField(choices=TYPE_CHOICES)
     version = models.CharField(max_length=20, validators=[validate_version])
 
