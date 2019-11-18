@@ -1,5 +1,9 @@
 # Changes and migration requirements
 
+## Version 0.0.7
+
+* Fix import error with Django 2.2.
+
 ## Version 0.0.6
 
 * Add support for Django 2.2.
