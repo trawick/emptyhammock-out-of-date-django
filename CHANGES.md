@@ -1,5 +1,9 @@
 # Changes and migration requirements
 
+## Version 0.0.8
+
+* Support Django 3.2 by setting default_auto_field .
+
 ## Version 0.0.7
 
 * Fix import error with Django 2.2.

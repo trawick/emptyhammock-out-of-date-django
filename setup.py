@@ -31,7 +31,7 @@ setup(
         'License :: OSI Approved :: Apache 2.0 License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
         'Development Status :: 3 - Alpha',
     ],
     install_requires=[
