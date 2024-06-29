@@ -1,5 +1,9 @@
 # Changes and migration requirements
 
+## Version 0.0.9
+
+* Support Django 4.2.  Django versions < 4.2 are no longer supported.
+
 ## Version 0.0.8
 
 * Support Django 3.2 by setting default_auto_field .

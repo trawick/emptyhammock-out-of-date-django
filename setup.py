@@ -35,6 +35,6 @@ setup(
         'Development Status :: 3 - Alpha',
     ],
     install_requires=[
-        'packaging', 'PyYAML',
+        'packaging', 'PyYAML', 'Django>=4.2',
     ],
 )

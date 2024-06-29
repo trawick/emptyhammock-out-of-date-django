@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.urls import path
 from django.contrib import admin
 from django.shortcuts import reverse
 from django.utils.html import format_html
@@ -13,6 +13,7 @@ class PackageVersionInline(admin.TabularInline):
     fields = ('version', 'type', )
 
 
+@admin.register(Package)
 class PackageAdmin(admin.ModelAdmin):
     change_list_template = 'e_ood_django/admin/package_change_list.html'
     inlines = (PackageVersionInline, )
@@ -30,22 +31,22 @@ class PackageAdmin(admin.ModelAdmin):
     def get_urls(self):
         urls = super().get_urls()
         return [
-            url(
-                r'^import_db/$',
+            path(
+                'import_db/',
                 staff_required(ImportDBView.as_view()),
                 name='{}_{}_import_db'.format(
                     self.model._meta.app_label, self.model._meta.model_name
                 )
             ),
-            url(
-                r'^export_db/(?P<uuid>[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})/$',
+            path(
+                'export_db/<uuid:uuid>/',
                 ExportDBView.as_view(),
                 name='{}_{}_export_db'.format(
                     self.model._meta.app_label, self.model._meta.model_name
                 )
             ),
-            url(
-                r'^admin_export_db/$',
+            path(
+                'admin_export_db/',
                 staff_required(AdminExportDBView.as_view()),
                 name='{}_{}_admin_export_db'.format(
                     self.model._meta.app_label, self.model._meta.model_name
@@ -54,6 +55,7 @@ class PackageAdmin(admin.ModelAdmin):
         ] + urls
 
 
+@admin.register(PackageDBAccess)
 class PackageDBAccessAdmin(admin.ModelAdmin):
     list_display = ('uuid', 'notes', )
     readonly_fields = ('uuid', '_url')
@@ -72,5 +74,3 @@ class PackageDBAccessAdmin(admin.ModelAdmin):
         )
 
 
-admin.site.register(Package, PackageAdmin)
-admin.site.register(PackageDBAccess, PackageDBAccessAdmin)
